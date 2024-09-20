@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgmycwfsv57dl"]
+
+[ext_resource type="Script" path="res://mechanics/battle/battler.gd" id="1_3wmjh"]
+[ext_resource type="Texture2D" uid="uid://b2k4n2i51n8km" path="res://data/graphics/pokemon/back/BULBASAUR.png" id="2_jdewl"]
+
+[node name="Battler" type="CharacterBody3D"]
+transform = Transform3D(0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0, 0)
+script = ExtResource("1_3wmjh")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+pixel_size = 0.8
+alpha_cut = 3
+texture_filter = 0
+texture = ExtResource("2_jdewl")

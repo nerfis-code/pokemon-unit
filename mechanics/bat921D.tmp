@@ -1,0 +1,100 @@
+[gd_scene load_steps=11 format=3 uid="uid://dlkkq5ycfmoas"]
+
+[ext_resource type="Script" path="res://mechanics/battle.gd" id="1_f48tf"]
+[ext_resource type="Script" path="res://mechanics/battle/message.gd" id="2_tb7e4"]
+[ext_resource type="Texture2D" uid="uid://dh7wbuf2lv3nu" path="res://data/graphics/ui/battle/overlay_message.png" id="2_vo02k"]
+[ext_resource type="FontFile" uid="uid://jwyysi8enavi" path="res://data/fonts/power red and green.ttf" id="3_fqjc7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e84i7"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_uwcxo"]
+sky_material = SubResource("ProceduralSkyMaterial_e84i7")
+
+[sub_resource type="Environment" id="Environment_d2owf"]
+background_mode = 2
+sky = SubResource("Sky_uwcxo")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="Theme" id="Theme_drcde"]
+RichTextLabel/colors/default_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+RichTextLabel/colors/font_outline_color = Color(0.111197, 0.111197, 0.111197, 1)
+RichTextLabel/constants/line_separation = 5
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = ExtResource("3_fqjc7")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v6uy2"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ywnvi"]
+data = PackedVector3Array(1, 0, 1, -1, 0, 1, 1, 0, -1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[node name="Battle" type="Node3D"]
+script = ExtResource("1_f48tf")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d2owf")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_force_pass_scroll_events = false
+
+[node name="Message" type="Control" parent="UI/Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_tb7e4")
+
+[node name="OverlayMessage" type="Sprite2D" parent="UI/Control/Message"]
+position = Vector2(585, 522)
+scale = Vector2(2, 2)
+texture = ExtResource("2_vo02k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Control/Message"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = 466.0
+offset_right = 1015.0
+offset_bottom = 565.0
+theme = SubResource("Theme_drcde")
+theme_override_colors/font_shadow_color = Color(0.647395, 0.647395, 0.647395, 1)
+scroll_active = false
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0720957, 0)
+mesh = SubResource("PlaneMesh_v6uy2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_ywnvi")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.252295, 1.81698)
+
+[node name="Field" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136092, 0)
+
+[node name="PlayerField" type="Node3D" parent="Field"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.406697)
+
+[node name="EnemyField" type="Node3D" parent="Field"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.483963)

@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlkkq5ycfmoas"]
+
+[ext_resource type="Texture2D" uid="uid://dh7wbuf2lv3nu" path="res://data/graphics/ui/battle/overlay_message.png" id="2_vo02k"]
+[ext_resource type="FontFile" uid="uid://jwyysi8enavi" path="res://data/fonts/power red and green.ttf" id="3_fqjc7"]
+
+[sub_resource type="Theme" id="Theme_drcde"]
+RichTextLabel/colors/default_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+RichTextLabel/colors/font_outline_color = Color(0.111197, 0.111197, 0.111197, 1)
+RichTextLabel/constants/line_separation = 5
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = ExtResource("3_fqjc7")
+
+[node name="Battle" type="Node3D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_force_pass_scroll_events = false
+
+[node name="OverlayMessage" type="Sprite2D" parent="UI/Control"]
+position = Vector2(585, 522)
+scale = Vector2(2, 2)
+texture = ExtResource("2_vo02k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 118.0
+offset_top = 466.0
+offset_right = 1015.0
+offset_bottom = 565.0
+theme = SubResource("Theme_drcde")
+theme_override_colors/font_shadow_color = Color(0.582376, 0.582376, 0.582376, 1)
+scroll_active = false

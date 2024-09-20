@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://bbgp22heyar6l"]
+
+[ext_resource type="Texture2D" uid="uid://dm6hn2phud0po" path="res://data/graphics/ui/battle/cursor_command.png" id="1_mfqh1"]
+[ext_resource type="Script" path="res://mechanics/battle/command.gd" id="1_w0dim"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13wdw"]
+atlas = ExtResource("1_mfqh1")
+region = Rect2(0, 0, 130, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wxmi0"]
+atlas = ExtResource("1_mfqh1")
+region = Rect2(130, 0, 130, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oqbhj"]
+atlas = ExtResource("1_mfqh1")
+region = Rect2(0, 92, 130, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5p2k"]
+atlas = ExtResource("1_mfqh1")
+region = Rect2(130, 92, 130, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2lr4n"]
+atlas = ExtResource("1_mfqh1")
+region = Rect2(0, 46, 130, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kew1n"]
+atlas = ExtResource("1_mfqh1")
+region = Rect2(130, 46, 130, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8d4mx"]
+atlas = ExtResource("1_mfqh1")
+region = Rect2(0, 138, 130, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxuqc"]
+atlas = ExtResource("1_mfqh1")
+region = Rect2(130, 138, 130, 46)
+
+[node name="Command" type="GridContainer"]
+anchors_preset = -1
+anchor_left = 28.812
+anchor_right = 28.812
+offset_left = -32377.4
+offset_top = 513.0
+offset_right = -32113.4
+offset_bottom = 709.0
+columns = 2
+script = ExtResource("1_w0dim")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_13wdw")
+texture_pressed = SubResource("AtlasTexture_wxmi0")
+texture_focused = SubResource("AtlasTexture_wxmi0")
+
+[node name="TextureButton2" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_oqbhj")
+texture_pressed = SubResource("AtlasTexture_b5p2k")
+texture_focused = SubResource("AtlasTexture_b5p2k")
+
+[node name="TextureButton3" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_2lr4n")
+texture_pressed = SubResource("AtlasTexture_kew1n")
+texture_focused = SubResource("AtlasTexture_kew1n")
+
+[node name="TextureButton4" type="TextureButton" parent="."]
+layout_mode = 2
+texture_normal = SubResource("AtlasTexture_8d4mx")
+texture_pressed = SubResource("AtlasTexture_dxuqc")
+texture_focused = SubResource("AtlasTexture_dxuqc")

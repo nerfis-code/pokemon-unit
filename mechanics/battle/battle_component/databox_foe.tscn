@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://dprqh2owtvs4k"]
+
+[ext_resource type="Script" path="res://mechanics/battle/battle_component/data.gd" id="1_8ryy8"]
+[ext_resource type="Texture2D" uid="uid://cd4tpr73gkskr" path="res://data/graphics/ui/battle/databox_normal_foe.png" id="1_tokov"]
+[ext_resource type="Texture2D" uid="uid://bgb46gp24718k" path="res://data/graphics/ui/battle/overlay_hp.png" id="2_qfryy"]
+[ext_resource type="Theme" uid="uid://bjifejl7epkr2" path="res://mechanics/battle/themes/battle.tres" id="4_xbty6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5m681"]
+atlas = ExtResource("2_qfryy")
+region = Rect2(0, 0, 0, 6)
+
+[node name="Databox" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 179.0
+offset_top = 428.0
+offset_right = 179.0
+offset_bottom = 428.0
+script = ExtResource("1_8ryy8")
+
+[node name="DataboxNormalFoe" type="Sprite2D" parent="."]
+position = Vector2(-4, 6)
+texture = ExtResource("1_tokov")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -16.0
+offset_top = 15.0
+offset_right = 80.0
+offset_bottom = 21.0
+texture_progress = SubResource("AtlasTexture_5m681")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -127.0
+offset_top = -14.0
+offset_right = -9.0
+offset_bottom = 9.0
+theme = ExtResource("4_xbty6")
+theme_override_colors/font_shadow_color = Color(0.730216, 0.730216, 0.730216, 1)
+text = "Pikachu"

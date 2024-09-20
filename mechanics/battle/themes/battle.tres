@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bjifejl7epkr2"]
+
+[ext_resource type="FontFile" uid="uid://c3t8llmfugjwv" path="res://data/fonts/power red and blue.ttf" id="1_dx6o3"]
+[ext_resource type="FontFile" uid="uid://bnqu7y1loqxgb" path="res://data/fonts/power clear.ttf" id="2_ovjmf"]
+
+[resource]
+Label/colors/font_color = Color(0.289741, 0.289741, 0.289741, 1)
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("1_dx6o3")
+RichTextLabel/colors/default_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+RichTextLabel/colors/font_outline_color = Color(0.111197, 0.111197, 0.111197, 1)
+RichTextLabel/constants/line_separation = 5
+RichTextLabel/font_sizes/bold_font_size = 16
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/normal_font = ExtResource("2_ovjmf")

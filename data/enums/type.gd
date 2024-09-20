@@ -1,0 +1,25 @@
+class_name Type
+
+enum symbols {
+	NONE = -1,
+	NORMAL,
+	FIGHTING,
+	FLYING,
+	POISON,
+	GROUND,
+	ROCK,
+	BUG,
+	GHOST,
+	STEEL,
+	QMARKS,
+	FIRE,
+	WATER,
+	GRASS,
+	ELECTRIC,
+	PSYCHIC,
+	ICE,
+	DRAGON,
+	DARK,
+	FAIRY,
+	STELLAR
+}
