@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://bib86wyw0g0w2"]
+
+[ext_resource type="Texture2D" uid="uid://dwmx2kgq6wjwj" path="res://data/graphics/ui/battle/overlay_fight.png" id="1_uo5w1"]
+[ext_resource type="PackedScene" uid="uid://ds67gqk7eewww" path="res://mechanics/battle/battle_component/command_att.tscn" id="2_sda5g"]
+
+[sub_resource type="GDScript" id="GDScript_n58se"]
+script/source = "extends GridContainer
+
+var command : int = -1
+var error : int = 0
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	get_child(1).grab_focus()
+	
+func await_select_command() -> int:
+	while command == -1 and error == 0:
+		await get_tree().process_frame
+	return command
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func assign(pkm:Battler) ->void:
+	var n:= 0
+	while n < pkm.pokemon.moves.size():
+		var mov = pkm.pokemon.moves[n]
+		get_child(n+1).visible = true
+		get_child(n+1).get_child(0).text = mov.data.name
+		get_child(n+1).pressed.connect(func (): command = n+0)
+		n+= 1
+		
+func _input(event: InputEvent) -> void: # 
+	if event.is_action_pressed(\"ui_cancel\"): 
+		error = 1
+"
+
+[node name="GridContainer2" type="GridContainer"]
+offset_left = 601.0
+offset_top = 517.0
+offset_right = 989.0
+offset_bottom = 605.0
+theme_override_constants/h_separation = 0
+columns = 2
+script = SubResource("GDScript_n58se")
+
+[node name="OverlayFight" type="Sprite2D" parent="."]
+position = Vector2(253.975, 46)
+texture = ExtResource("1_uo5w1")
+
+[node name="TextureButton" parent="." instance=ExtResource("2_sda5g")]
+visible = false
+layout_mode = 2
+
+[node name="TextureButton2" parent="." instance=ExtResource("2_sda5g")]
+visible = false
+layout_mode = 2
+focus_neighbor_left = NodePath("../TextureButton")
+focus_neighbor_bottom = NodePath("../TextureButton4")
+
+[node name="TextureButton3" parent="." instance=ExtResource("2_sda5g")]
+visible = false
+layout_mode = 2
+
+[node name="TextureButton4" parent="." instance=ExtResource("2_sda5g")]
+visible = false
+layout_mode = 2
+focus_neighbor_top = NodePath("../TextureButton2")

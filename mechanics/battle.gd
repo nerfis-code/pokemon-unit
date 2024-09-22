@@ -5,13 +5,12 @@ class_name Battle extends Node3D
 @onready var phase = $PhasesControl
 
 
-enum Command {
-	WAIT = -1,
-  FIGHT,
-  BALL,
-  POKEMON,
-  RUN,
-  ITEM
+enum command {
+  	FIGHT,
+  	BALL,
+  	POKEMON,
+  	RUN,
+  	ITEM
 }
 
 enum battleType{
@@ -45,7 +44,6 @@ var turnCommand = {}
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 
-	# 
 	var a = PokemonSpecies.new("BULBASAUR")
 	var pkm = Pokemon.new(PokemonSpecies.new("BULBASAUR"))
 	var pkm2 = Pokemon.new(PokemonSpecies.new("CHARMANDER"))
@@ -66,7 +64,7 @@ class QueuedMove :
 	var ignorePP : bool
 
 class TurnCommand :
-	var command: Command
+	var currCommand: command
 	#cursor?: integer;
 	var move: QueuedMove
 	var targets: Array[battlerIndex]

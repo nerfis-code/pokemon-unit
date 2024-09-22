@@ -1,12 +1,12 @@
 class_name Pokemon
 
 var species         :PokemonSpecies
-var form         :int
-var level         :int
-var primaryType                	:String # <- object
-var secondaryType              	:String # <- object
-var abilities           		:String
-
+var form         	:int
+var level         	:int
+var primaryType		:String # <- object
+var secondaryType   :String # <- object
+var abilities       :String
+var moves           :Array[move]
 var stats           :Array[int] 
 var ps            	:int 
 var ivs            	:Array[int] 
@@ -31,6 +31,7 @@ func _init(species: PokemonSpecies) -> void:
 		pass
 		
 	calculate_stats()
+	learn_any_move()
 
 func calculate_stats():
 	
@@ -45,3 +46,21 @@ func calculate_stats():
 			stats[Stat.HP] = newPs
 			continue
 		stats[s] = int(5 + scale * (species.baseStats[s] * 2 + ivs[s] + evs[s] )) # nature
+
+func learn_any_move():
+	var res:Array[String] = []
+
+	for curr in species.moves:
+		var lv = curr[0]
+		var mov = curr[1]
+
+		if lv > level : break
+
+		if res.size() < 4: res.append(mov)		
+		else : res[randi_range(0,3)] = mov
+	
+	var cache : Array[move] = []
+	for str in res:
+		cache.append(move.new(str))
+			
+	moves = cache

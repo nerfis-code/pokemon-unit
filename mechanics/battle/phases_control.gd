@@ -2,10 +2,10 @@ extends Node
 
 var waitingList: Array[Phases]
 var curr : Phases
+@onready var controller = $ControllerCommand
 
 func change_phase() -> void:
 	if waitingList.size() == 0:
-		print("Se acabo el juegesito ete no mal echo")
 		return
 	curr = waitingList.pop_front()
 	add_child(curr)

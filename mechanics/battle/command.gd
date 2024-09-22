@@ -1,18 +1,20 @@
 extends Control
 
-var command : Battle.Command = -1
+var command : int = -1
+var error : int = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$TextureButton.grab_focus()
-	$TextureButton.pressed.connect(func () : command = Battle.Command.FIGHT)
-	$TextureButton2.pressed.connect(func () : command = Battle.Command.ITEM)
-	$TextureButton3.pressed.connect(func () : command = Battle.Command.POKEMON)
-	$TextureButton4.pressed.connect(func () : command = Battle.Command.RUN)
+	$GridContainer/TextureButton.grab_focus() #command = Battle.Command.FIGHT
+	$GridContainer/TextureButton.pressed.connect(func (): command = 0)
 
-func await_select_command() -> Battle.Command:
-	while command == -1:
+func await_select_command() -> int:
+	while command == -1 and error == 0:
 		await get_tree().process_frame
 	return command
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+
+		
+func _input(event: InputEvent) -> void: # 
+	if event.is_action_pressed("ui_cancel"): 
+		error = 1
+	

@@ -1,10 +1,7 @@
-class_name GrowthRate
 
-enum symbols {
-    ERRATIC,
-    FAST,
-    MEDIUM_FAST,
-    MEDIUM_SLOW,
-    SLOW,
-    FLUCTUATING
-}
+var ERRATIC := "ERRATIC"
+var FAST := "FAST"
+var MEDIUM_FAST := "MEDIUM_FAST"
+var MEDIUM_SLOW := "MEDIUM_SLOW"
+var SLOW := "SLOW"
+var FLUCTUATING := "FLUCTUATING"

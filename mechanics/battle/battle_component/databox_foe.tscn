@@ -12,10 +12,10 @@ region = Rect2(0, 0, 0, 6)
 [node name="Databox" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 179.0
-offset_top = 428.0
-offset_right = 179.0
-offset_bottom = 428.0
+offset_left = 134.0
+offset_top = 55.0
+offset_right = 134.0
+offset_bottom = 55.0
 script = ExtResource("1_8ryy8")
 
 [node name="DataboxNormalFoe" type="Sprite2D" parent="."]
@@ -31,6 +31,7 @@ offset_bottom = 21.0
 texture_progress = SubResource("AtlasTexture_5m681")
 
 [node name="Label" type="Label" parent="."]
+layout_mode = 0
 offset_left = -127.0
 offset_top = -14.0
 offset_right = -9.0

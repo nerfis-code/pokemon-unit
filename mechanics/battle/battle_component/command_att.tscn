@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ds67gqk7eewww"]
+
+[ext_resource type="Texture2D" uid="uid://ebtr5v50p7jr" path="res://data/graphics/ui/battle/cursor_fight.png" id="1_ist5d"]
+[ext_resource type="FontFile" uid="uid://bnqu7y1loqxgb" path="res://data/fonts/power clear.ttf" id="2_tjdym"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbk04"]
+atlas = ExtResource("1_ist5d")
+region = Rect2(0, 0, 192, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pd3p"]
+atlas = ExtResource("1_ist5d")
+region = Rect2(192, 0, 192, 46)
+
+[node name="TextureButton" type="TextureButton"]
+texture_normal = SubResource("AtlasTexture_jbk04")
+texture_focused = SubResource("AtlasTexture_3pd3p")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 22.9746
+offset_top = 11.0
+offset_right = 170.975
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(0.28485, 0.28485, 0.28485, 1)
+theme_override_colors/font_shadow_color = Color(0.669315, 0.669315, 0.669315, 1)
+theme_override_fonts/font = ExtResource("2_tjdym")
+theme_override_font_sizes/font_size = 25
+text = "Abocajarro"
+horizontal_alignment = 1

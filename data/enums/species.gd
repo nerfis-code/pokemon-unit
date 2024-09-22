@@ -1,5 +1,3 @@
-
-
 var BULBASAUR := "BULBASAUR"
 var IVYSAUR := "IVYSAUR"
 var VENUSAUR := "VENUSAUR"

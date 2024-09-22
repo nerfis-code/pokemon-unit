@@ -36,8 +36,8 @@ func _set_ui() -> void:
 		get_node("Data").update(pokemon.ps)
 		return
 	var node = load("res://mechanics/battle/battle_component/databox.tscn").instantiate() if isPlayer else load("res://mechanics/battle/battle_component/databox_foe.tscn").instantiate()
-	var pos = Vector2(180 + get_index()*300 , 500) if isPlayer else Vector2(975 - get_index()*300,70)
-	node.position = pos
+	var pos = Vector2(0,-100*get_index()) if isPlayer else Vector2(0,100*get_index())
+	node.position += pos
 	node.name = "Data"
 	add_child(node)
 

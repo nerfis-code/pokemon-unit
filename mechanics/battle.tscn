@@ -1,9 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlkkq5ycfmoas"]
+[gd_scene load_steps=12 format=3 uid="uid://dlkkq5ycfmoas"]
 
 [ext_resource type="Script" path="res://mechanics/battle.gd" id="1_f48tf"]
 [ext_resource type="Script" path="res://mechanics/battle/phases_control.gd" id="2_ddlov"]
-[ext_resource type="Script" path="res://mechanics/battle/message.gd" id="2_tb7e4"]
 [ext_resource type="Texture2D" uid="uid://dh7wbuf2lv3nu" path="res://data/graphics/ui/battle/overlay_message.png" id="2_vo02k"]
+[ext_resource type="Script" path="res://mechanics/battle/battle_component/controller_command.gd" id="3_1ecqb"]
 [ext_resource type="Theme" uid="uid://bjifejl7epkr2" path="res://mechanics/battle/themes/battle.tres" id="4_53w85"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e84i7"]
@@ -18,6 +18,45 @@ background_mode = 2
 sky = SubResource("Sky_uwcxo")
 tonemap_mode = 2
 glow_enabled = true
+
+[sub_resource type="GDScript" id="GDScript_862iw"]
+script/source = "extends Control
+
+@onready var tex = $RichTextLabel
+var isRunning := false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+
+	
+func append_text(msg: String) -> void:
+	tex.text = \"\"
+	visible = true
+	isRunning = true
+	for m in msg.split(\"\"):
+		tex.text += m
+		await get_tree().create_timer(0.04).timeout
+		if not isRunning:
+			break
+	tex.text = msg		
+	isRunning = true
+	var timer = 1.0 
+	while timer > 0:
+		await get_tree().process_frame 
+		timer -= get_process_delta_time()
+		if not isRunning:
+			break
+	visible = false
+
+func _input(event: InputEvent) -> void: # 
+
+	if event.is_action_pressed(\"ui_accept\"): 
+		isRunning = false
+
+		
+	
+"
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_v6uy2"]
 
@@ -38,6 +77,9 @@ shadow_blur = 0.0
 [node name="PhasesControl" type="Node" parent="."]
 script = ExtResource("2_ddlov")
 
+[node name="ControllerCommand" type="Node" parent="PhasesControl"]
+script = ExtResource("3_1ecqb")
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Control" type="Control" parent="UI"]
@@ -54,7 +96,7 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
-script = ExtResource("2_tb7e4")
+script = SubResource("GDScript_862iw")
 
 [node name="OverlayMessage" type="Sprite2D" parent="UI/Control/Message"]
 position = Vector2(585, 522)

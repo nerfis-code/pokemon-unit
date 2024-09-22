@@ -10,8 +10,8 @@ func _ready() -> void:
 
 func _end() -> void:
 	get_parent().remove_child(self)
-	self.queue_free()
 	control.change_phase()
+	self.queue_free()
 
 
 class Initialize extends Phases:

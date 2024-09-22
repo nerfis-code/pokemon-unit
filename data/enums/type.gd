@@ -1,25 +1,23 @@
-class_name Type
 
-enum symbols {
-	NONE = -1,
-	NORMAL,
-	FIGHTING,
-	FLYING,
-	POISON,
-	GROUND,
-	ROCK,
-	BUG,
-	GHOST,
-	STEEL,
-	QMARKS,
-	FIRE,
-	WATER,
-	GRASS,
-	ELECTRIC,
-	PSYCHIC,
-	ICE,
-	DRAGON,
-	DARK,
-	FAIRY,
-	STELLAR
-}
+var NONE  := "NONE"
+var NORMAL := "NORMAL"
+var FIGHTING := "FIGHTING"
+var FLYING := "FLYING"
+var POISON := "POISON"
+var GROUND := "GROUND"
+var ROCK := "ROCK"
+var BUG := "BUG"
+var GHOST := "GHOST"
+var STEEL := "STEEL"
+var QMARKS := "QMARKS"
+var FIRE := "FIRE"
+var WATER := "WATER"
+var GRASS := "GRASS"
+var ELECTRIC := "ELECTRIC"
+var PSYCHIC := "PSYCHIC"
+var ICE  := "ICE"
+var DRAGON := "DRAGON"
+var DARK := "DARK"
+var FAIRY := "FAIRY"
+var STELLAR  := "STELLAR"
+

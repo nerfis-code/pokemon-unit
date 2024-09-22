@@ -35,36 +35,45 @@ region = Rect2(0, 138, 130, 46)
 atlas = ExtResource("1_mfqh1")
 region = Rect2(130, 138, 130, 46)
 
-[node name="Command" type="GridContainer"]
-anchors_preset = -1
-anchor_left = 28.812
-anchor_right = 28.812
-offset_left = -32377.4
-offset_top = 513.0
-offset_right = -32113.4
-offset_bottom = 709.0
-columns = 2
+[node name="Command" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_w0dim")
 
-[node name="TextureButton" type="TextureButton" parent="."]
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.24
+anchor_bottom = 0.165
+offset_left = 846.0
+offset_top = 517.0
+offset_right = 846.52
+offset_bottom = 517.08
+columns = 2
+
+[node name="TextureButton" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_13wdw")
 texture_pressed = SubResource("AtlasTexture_wxmi0")
 texture_focused = SubResource("AtlasTexture_wxmi0")
 
-[node name="TextureButton2" type="TextureButton" parent="."]
+[node name="TextureButton2" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_oqbhj")
 texture_pressed = SubResource("AtlasTexture_b5p2k")
 texture_focused = SubResource("AtlasTexture_b5p2k")
 
-[node name="TextureButton3" type="TextureButton" parent="."]
+[node name="TextureButton3" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_2lr4n")
 texture_pressed = SubResource("AtlasTexture_kew1n")
 texture_focused = SubResource("AtlasTexture_kew1n")
 
-[node name="TextureButton4" type="TextureButton" parent="."]
+[node name="TextureButton4" type="TextureButton" parent="GridContainer"]
 layout_mode = 2
 texture_normal = SubResource("AtlasTexture_8d4mx")
 texture_pressed = SubResource("AtlasTexture_dxuqc")
